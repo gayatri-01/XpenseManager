@@ -38,14 +38,14 @@ public class Home extends AppCompatActivity {
         TextView headerUserName = (TextView) navHeaderView.findViewById(R.id.username);
         TextView headerEmail = (TextView) navHeaderView.findViewById(R.id.email);
 
-        FloatingActionButton f = (FloatingActionButton)findViewById(R.id.fab);
+      /*  FloatingActionButton f = (FloatingActionButton)findViewById(R.id.fab);
         f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                // Intent i = new Intent(Home.this,test.class);
                 //startActivity(i);
             }
-        });
+        });*/
 
 
         SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);

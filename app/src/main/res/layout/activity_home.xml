@@ -8,23 +8,121 @@
     tools:context=".Home"
     android:theme="@style/Theme.AppCompat">
 
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="@color/white"
-        android:theme="@style/Theme.AppCompat">
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-
-            android:src="@drawable/ic_add"
-            android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+            app:cardCornerRadius="5dp"
+            android:id="@+id/cd_income"
+            app:cardMaxElevation="10dp"
+            app:cardElevation="6dp"
+            android:layout_width="0dp"
+            app:cardBackgroundColor="@color/white"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="16dp"
-            />
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            >
 
-    </LinearLayout>
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="Income" />
+            <TextView
+                android:layout_marginTop="30dp"
+                android:id="@+id/home_amt_income"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/list"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="6972" />
+
+        </android.support.v7.widget.CardView>
+        <View
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center_vertical"
+            android:layout_width="1dp"
+            android:layout_height="10dp"
+            android:background="@android:color/darker_gray" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cd_expense"
+            app:cardMaxElevation="10dp"
+            app:cardCornerRadius="5dp"
+            android:layout_width="0dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="Expense" />
+            <TextView
+                android:layout_marginTop="30dp"
+                android:id="@+id/home_amt_expense"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/list"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="7869" />
+
+        </android.support.v7.widget.CardView>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cd_balance"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="6dp"
+            app:cardMaxElevation="10dp"
+            android:layout_width="0dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="Balance" />
+            <TextView
+                android:layout_marginTop="30dp"
+                android:id="@+id/home_amt_balance"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/list"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="-897" />
+
+        </android.support.v7.widget.CardView></LinearLayout>
 
 
     <android.support.design.widget.NavigationView
