@@ -89,9 +89,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                            String table="expenses";
                            int finalAMT=Integer.parseInt(String.valueOf(e.getText()));
                            e.setText("");
-                           //pass finalAMT and category to dbms
+                           int i=0;
                            Toast.makeText(mContext,"Category: "+category,Toast.LENGTH_SHORT).show();
                            myDb.insertData(table,category,username,finalAMT);
+                           for( Expense ex :mData)
+                           {
+                               if(ex.getName().equals(category))
+                               {
+
+                                   break;
+                               }
+
+                               i++;
+                           }
+                           mData.get(i).setAmount(myDb.findSum("expenses",category,username));
+
+                           //pass finalAMT and category to dbms
+
                            //and then close dialog
                            myDialog.dismiss();
                        }

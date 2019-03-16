@@ -87,6 +87,17 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
                             int finalAMT=Integer.parseInt(String.valueOf(e.getText()));
                             //pass finalAMT and category to dbms
                             e.setText("");
+                            int i=0;
+                            for( Income e :mData2)
+                            {
+                                if(e.getName().equals(category))
+                                {
+                                    e.setAmount(myDb.findSum("incomes",category,username));
+                                    break;
+                                }
+
+                                i++;
+                            }
                             Toast.makeText(mContext2,"Category: "+category,Toast.LENGTH_SHORT).show();
                             //and then close dialog
                             myDb.insertData(table,category,username,finalAMT);

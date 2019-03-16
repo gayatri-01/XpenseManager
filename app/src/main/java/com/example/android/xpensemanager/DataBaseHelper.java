@@ -58,6 +58,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if(exists)
         {
+            //change to select query
             Cursor resdate=db.rawQuery("select date from "+tableName,null);
           /* if(resdate.getString(cursor.getColumnIndex("Date"))!=new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString())
             {
@@ -108,6 +109,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             String where = "user=? and date=?";
             String[] whereArgs = new String[] {username,new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString()};
+
+
 
             db.update(tableName,contentValues1, where, whereArgs);
 
@@ -179,9 +182,18 @@ public Cursor retrieveData(String username, String date,String table)
 
     }*/
 
+public String findSum(String table, String col,String username)
 
+{SQLiteDatabase db=this.getWritableDatabase();
+    Cursor cursor = db.rawQuery("SELECT SUM(" + col + ") as Total FROM " + table, null);
+int total=0;
+    if (cursor.moveToFirst()) {
 
+         total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
 }
+return String.valueOf(total);
+
+}}
 
 
   /*
