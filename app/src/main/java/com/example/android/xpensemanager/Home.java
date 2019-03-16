@@ -73,12 +73,12 @@ public class Home extends AppCompatActivity {
 
                 switch (id) {
                     case R.id.categories:
-                       // Intent intent = new Intent(Home.this, Categories.class);
-                       // startActivity(intent);
+                       Intent intent = new Intent(Home.this, Categories.class);
+                        startActivity(intent);
                         break;
                     case R.id.stats:
-                       // Intent i = new Intent(Home.this, Calendar.class);
-                       // startActivity(i);
+                      // Intent i = new Intent(Home.this, Calendar.class);
+                       //startActivity(i);
                         break;
                     //do something
                     case R.id.export:

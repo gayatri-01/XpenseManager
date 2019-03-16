@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#232323"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:id="@+id/dialog2_name_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income Name"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_marginTop="90dp"
+            />
+        <TextView
+            android:fontFamily="@font/list"
+            android:id="@+id/dialog2_amount_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Amount Number"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            />
+        <EditText
+            android:id="@+id/dialog2_edittext"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:inputType="text"/>
+        <Button
+            android:id="@+id/dialog2_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="Add Income"
+            android:layout_marginTop="10dp"
+            />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dialog2_img"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_sale"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        />
+
+</RelativeLayout>
