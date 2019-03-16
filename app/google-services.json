@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "276744287327",
+    "firebase_url": "https://xpensemanager-2de85.firebaseio.com",
+    "project_id": "xpensemanager-2de85",
+    "storage_bucket": "xpensemanager-2de85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276744287327:android:8d627ec482e96f4a",
+        "android_client_info": {
+          "package_name": "com.example.android.xpensemanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276744287327-3cipauugd55livgg52sdufilp2m4m70a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.xpensemanager",
+            "certificate_hash": "d80919c09e4b9ef8e9f6a483a2b78b4df22aa8c6"
+          }
+        },
+        {
+          "client_id": "276744287327-icrfsojbr68bh2fd31oj6300jv558ksr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWcSdAYCIva731CrnVV1yQYxsIj9C8wZM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276744287327-icrfsojbr68bh2fd31oj6300jv558ksr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

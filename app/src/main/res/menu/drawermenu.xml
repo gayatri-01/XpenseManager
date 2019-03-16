@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/categories" android:title="Catergories" android:icon="@drawable/ic_categories"/>
+    <item android:id="@+id/stats" android:title="Stats" android:icon="@drawable/ic_stats" />
+    <item android:id="@+id/export" android:title="Export" android:icon="@drawable/ic_export"/>
+    <item android:id="@+id/setting" android:title="Settings" android:icon="@drawable/ic_settings" />
+    <item android:id="@+id/about" android:title="About" android:icon="@drawable/ic_about"/>
+    <item android:id="@+id/logout" android:title="Logout" />
+</menu>
