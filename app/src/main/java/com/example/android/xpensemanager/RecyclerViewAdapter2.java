@@ -2,6 +2,7 @@ package com.example.android.xpensemanager;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -37,6 +38,11 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        SharedPreferences settings = mContext2.getSharedPreferences("MyPrefsFile", 0);
+        final String username = settings.getString("username", null);
+
+        final DataBaseHelper myDb = new DataBaseHelper(mContext2);
         View v2;
         v2= LayoutInflater.from(mContext2).inflate(R.layout.item_income,parent, false);
         final MyViewHolder vHolder2 = new MyViewHolder(v2);
@@ -77,11 +83,13 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
                             Toast.makeText(mContext2,"Please enter a valid amount.",Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            String table="Income";
-                            float finalAMT=Float.parseFloat(String.valueOf(e.getText()));
+                            String table="incomes";
+                            int finalAMT=Integer.parseInt(String.valueOf(e.getText()));
                             //pass finalAMT and category to dbms
+                            e.setText("");
                             Toast.makeText(mContext2,"Category: "+category,Toast.LENGTH_SHORT).show();
                             //and then close dialog
+                            myDb.insertData(table,category,username,finalAMT);
                             myDialog2.dismiss();
                         }
 

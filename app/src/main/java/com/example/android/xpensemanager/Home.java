@@ -77,8 +77,8 @@ public class Home extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.stats:
-                      // Intent i = new Intent(Home.this, Calendar.class);
-                       //startActivity(i);
+                      Intent i = new Intent(Home.this, Calendar.class);
+                      startActivity(i);
                         break;
                     //do something
                     case R.id.export:
@@ -87,6 +87,7 @@ public class Home extends AppCompatActivity {
                     case R.id.setting:
 
                     case R.id.about:
+
 
                     default:
                         break;
