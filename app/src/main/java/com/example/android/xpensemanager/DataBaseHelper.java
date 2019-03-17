@@ -54,65 +54,68 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         boolean exists = (cursor.getCount() > 0);
         cursor.close();
         long result=0; int value1=value;
+        String d="";
 
 
         if(exists)
         {
             //change to select query
-            Cursor resdate=db.rawQuery("select date from "+tableName,null);
-          /* if(resdate.getString(cursor.getColumnIndex("Date"))!=new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString())
+           Cursor resdate=db.rawQuery("select Date from "+tableName+" where user = \""+username+"\"",null);
+            if( resdate != null && resdate.moveToFirst() ){
+                d = resdate.getString(resdate.getColumnIndex("Date"));
+                resdate.close();
+            }
+
+          if(!d.equals(new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString()))
             {
                 ContentValues contentValues=new ContentValues();
                 contentValues.put("user",username);
                 contentValues.put(colName,value);
                 contentValues.put("sum",value);
-                contentValues.put("date","2019-03-17");
+                contentValues.put("date",new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString());
                 result=db.insert( tableName,null,contentValues);
-            }*/
-
-             {
-                Cursor res = db.rawQuery("select " + colName + " from " + tableName, null);
-                boolean m = (cursor.getCount() > 0);
-                if (m) {
-                    res.moveToFirst();
-                    String prevSal = res.getString(0);
-                    if (prevSal != null) {
-                        int prev = Integer.parseInt(prevSal);
-                        value1 = value + prev;
-                    }
-                }
-
-
-                ContentValues contentValues1 = new ContentValues();
-                contentValues1.put(colName, value1);
-                String where = "user=? and date =?";
-                String[] whereArgs = new String[]{username,new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString().toString()};
-                db.update(tableName, contentValues1, where, whereArgs);
-
             }
 
+            else {
+              Cursor res = db.rawQuery("select " + colName + " from " + tableName, null);
+              boolean m = (cursor.getCount() > 0);
+              if (m) {
+                  res.moveToFirst();
+                  String prevSal = res.getString(0);
+                  if (prevSal != null) {
+                      int prev = Integer.parseInt(prevSal);
+                      value1 = value + prev;
+                  }
+              }
 
 
-            String[] columns2 = { "sum" };
-            String selection2 = "user =? and date =?";
-            String[] selectionArgs2 = { username,new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString() };
-            String limit1 = "1";
-
-            Cursor cursor1= db.query(tableName, columns2, selection2, selectionArgs2, null, null, null, limit);
-            cursor1.moveToFirst();
-            String prevSum=cursor1.getString(0);
-            int prev=Integer.parseInt(prevSum);
-            value=value+prev;
-
-            ContentValues contentValues1=new ContentValues();
-            contentValues1.put("sum",value);
-
-            String where = "user=? and date=?";
-            String[] whereArgs = new String[] {username,new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString()};
+              ContentValues contentValues1 = new ContentValues();
+              contentValues1.put(colName, value1);
+              String where = "user=? and date =?";
+              String[] whereArgs = new String[]{username, new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString().toString()};
+              db.update(tableName, contentValues1, where, whereArgs);
 
 
+              String[] columns2 = {"sum"};
+              String selection2 = "user =? and date =?";
+              String[] selectionArgs2 = {username, new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString()};
+              String limit1 = "1";
 
-            db.update(tableName,contentValues1, where, whereArgs);
+              Cursor cursor1 = db.query(tableName, columns2, selection2, selectionArgs2, null, null, null, limit1);
+              cursor1.moveToFirst();
+              String prevSum = cursor1.getString(0);
+              int prev = Integer.parseInt(prevSum);
+              value = value + prev;
+
+              ContentValues contentValues2 = new ContentValues();
+              contentValues1.put("sum", value);
+
+              String where1 = "user=? and date=?";
+              String[] whereArgs1 = new String[]{username, new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString()};
+
+
+              db.update(tableName, contentValues2, where1, whereArgs1);
+          }
 
 
 
@@ -193,7 +196,54 @@ int total=0;
 }
 return String.valueOf(total);
 
-}}
+}
+
+
+public String findExpense(String username)
+{
+    String Food=findSum("expenses","Food",username);
+    String Electronics=findSum("expenses","Electronics",username);
+    String Transport=findSum("expenses","Transport",username);
+    String Gift=findSum("expenses","Gift",username);
+    String Bills=findSum("expenses","Bills",username);
+    String Home=findSum("expenses","Home",username);
+    String Education=findSum("expenses","Education",username);
+    String ChildCare=findSum("expenses","ChildCare",username);
+    String Miscellaneous=findSum("expenses","Miscellaneous",username);
+    int total=0;
+    total=Integer.parseInt(Food)+
+            Integer.parseInt(Electronics)+
+            Integer.parseInt(Transport)+
+            Integer.parseInt(Bills)+
+            Integer.parseInt(Home)+
+            Integer.parseInt(Education)+
+            Integer.parseInt(ChildCare)+
+            Integer.parseInt(Miscellaneous)+
+            Integer.parseInt(Gift);
+    String expense=String.valueOf(total);
+    return  expense;
+}
+
+    public String findIncome(String username)
+    {
+        String Business=findSum("incomes","Business",username);
+        String Salary=findSum("incomes","Salary",username);
+        String Coupon=findSum("incomes","Coupon",username);
+        String Grants=findSum("incomes","Grants",username);
+        String Sale=findSum("incomes","Sale",username);
+
+        int total=0;
+        total=Integer.parseInt(Business)+
+                Integer.parseInt(Salary)+
+                Integer.parseInt(Coupon)+
+                Integer.parseInt(Grants)+
+                Integer.parseInt(Sale);
+
+        String income=String.valueOf(total);
+        return  income;
+    }
+
+}
 
 
   /*

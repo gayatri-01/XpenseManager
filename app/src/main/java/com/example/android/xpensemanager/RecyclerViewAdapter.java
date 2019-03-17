@@ -43,6 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final String username = settings.getString("username", null);
 
         final DataBaseHelper myDb = new DataBaseHelper(mContext);
+
        View v;
        v= LayoutInflater.from(mContext).inflate(R.layout.item_expense,parent, false);
        final MyViewHolder vHolder = new MyViewHolder(v);
@@ -89,20 +90,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                            String table="expenses";
                            int finalAMT=Integer.parseInt(String.valueOf(e.getText()));
                            e.setText("");
-                           int i=0;
-                           Toast.makeText(mContext,"Category: "+category,Toast.LENGTH_SHORT).show();
-                           myDb.insertData(table,category,username,finalAMT);
-                           for( Expense ex :mData)
-                           {
-                               if(ex.getName().equals(category))
-                               {
+                           int i=0; String m;
+                           Toast.makeText(mContext, "Category: " + category, Toast.LENGTH_SHORT).show();
+                           if (category.equals("Child Care")) {
+                               m = "ChildCare";
+                               myDb.insertData(table, m, username, finalAMT);
 
-                                   break;
-                               }
 
-                               i++;
                            }
-                           mData.get(i).setAmount(myDb.findSum("expenses",category,username));
+                           else {
+                               Toast.makeText(mContext, "Category: " + category, Toast.LENGTH_SHORT).show();
+                               myDb.insertData(table, category, username, finalAMT);
+
+                               for (Expense ex : mData) {
+                                   if (ex.getName().equals(category)) {
+
+                                       break;
+                                   }
+
+                                   i++;
+                               }
+                               mData.get(i).setAmount(myDb.findSum("expenses", category, username));
+                           }
 
                            //pass finalAMT and category to dbms
 

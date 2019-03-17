@@ -69,6 +69,9 @@ public class Home extends AppCompatActivity {
     FirebaseAuth.AuthStateListener mAuthListener;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    TextView income;
+    TextView expense;
+    TextView balance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -121,6 +124,15 @@ public class Home extends AppCompatActivity {
 
         headerUserName.setText(username);
         headerEmail.setText(email);
+
+       DataBaseHelper myDb = new DataBaseHelper(this);
+        income=(TextView) findViewById(R.id.home_amt_income);
+        expense=(TextView) findViewById(R.id.home_amt_expense);
+        balance=(TextView) findViewById(R.id.home_amt_balance);
+        income.setText(myDb.findIncome(username));
+        expense.setText(myDb.findExpense(username));
+        balance.setText(String.valueOf(Integer.parseInt(myDb.findIncome(username))-Integer.parseInt(myDb.findExpense(username))));
+
         navigationView.setItemBackgroundResource(R.drawable.selector);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
