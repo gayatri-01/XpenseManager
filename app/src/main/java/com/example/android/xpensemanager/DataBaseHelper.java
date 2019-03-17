@@ -185,7 +185,7 @@ public Cursor retrieveData(String username, String date,String table)
 public String findSum(String table, String col,String username)
 
 {SQLiteDatabase db=this.getWritableDatabase();
-    Cursor cursor = db.rawQuery("SELECT SUM(" + col + ") as Total FROM " + table, null);
+    Cursor cursor = db.rawQuery("SELECT SUM(" + col + ") as Total FROM " + table+" where user = \""+username+"\"", null);
 int total=0;
     if (cursor.moveToFirst()) {
 
