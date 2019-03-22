@@ -11,7 +11,7 @@
 
 
 <p align="center"> 
-  [![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://github.com/gayatri-01/XpenseManager/blob/master/app-debug.apk)
+ [![download](https://img.shields.io/badge/download-download--apk-brightgreen.svg)](https://github.com/gayatri-01/XpenseManager/blob/master/app-debug.apk)
 </p>
  
  <hr>
