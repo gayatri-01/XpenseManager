@@ -44,8 +44,9 @@
 <hr>
 <h3>Contributors</h3>
 <ul>
-   <li> Rahul Mistry  https://github.com/rahulmistry33
+   
   <li> Gayatri Srinivasan https://github.com/gayatri-01 
+  <li> Rahul Mistry  https://github.com/rahulmistry33
   <li> Girish Thatte  https://github.com/girishgr8
   <li> Amisha Waghela  https://github.com/amisha-w
   <li> Kalpesh Mataghare https://github.com/kmtghr
