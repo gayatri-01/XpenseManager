@@ -9,9 +9,9 @@
   
 </div>
 
- [![download-apk](
+<p align="center"> [![download-apk](
 https://img.shields.io/badge/download-apk-red.svg)](https://img.shields.io/badge/download-download--apk-green.svg
-)
+)</p>
  
  <hr>
   
