@@ -11,7 +11,7 @@
 
 
 <p align="center"> 
- [![download](https://img.shields.io/badge/download-download--apk-brightgreen.svg)](https://github.com/gayatri-01/XpenseManager/blob/master/app-debug.apk)
+  <a href="https://github.com/gayatri-01/XpenseManager/blob/master/app-debug.apk">download apk</a>
 </p>
  
  <hr>
