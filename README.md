@@ -10,9 +10,9 @@
 </div>
 
 
-<div align="center"> [![download-apk](
+<p align="center"> [![download-apk](
 https://img.shields.io/badge/download-apk-red.svg)](https://github.com/gayatri-01/XpenseManager/blob/master/app-debug.apk
-)</div>
+)</p>
  
  <hr>
   
