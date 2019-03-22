@@ -10,9 +10,9 @@
 </div>
 
 
-<p align="center"> [![download-apk](
-https://img.shields.io/badge/download-apk-red.svg)](https://github.com/gayatri-01/XpenseManager/blob/master/app-debug.apk
-)</p>
+<p align="center"> 
+  [![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://github.com/gayatri-01/XpenseManager/blob/master/app-debug.apk)
+</p>
  
  <hr>
   
