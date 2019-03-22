@@ -1,4 +1,5 @@
 package com.example.android.xpensemanager;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 
@@ -9,6 +10,12 @@ import android.view.View;
 
 
 public class Categories extends AppCompatActivity {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent i = new Intent(this,Home.class);
+        this.startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

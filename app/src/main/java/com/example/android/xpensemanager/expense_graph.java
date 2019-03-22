@@ -2,6 +2,7 @@ package com.example.android.xpensemanager;
 
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,12 +27,29 @@ public class expense_graph extends AppCompatActivity {
     private String[] category = {"Food","Electronics","Transport","Gift","Bills","Home","Miscellaneous","Balance"/*,"Education","Child Care"*/};
     PieChart pieChart;
     Legend legend;
+    DataBaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense_graph);
         Log.d(TAG, "onCreate: starting to create pie chart");
+        myDb = new DataBaseHelper(this);
+        SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
+        final String username = settings.getString("username", null);
+        expenses[0]=Integer.parseInt(myDb.findSum("expenses","Food",username));
+        expenses[1]=Integer.parseInt(myDb.findSum("expenses","Electronics",username));
+        expenses[2]=Integer.parseInt(myDb.findSum("expenses","Transport",username));
+        expenses[3]=Integer.parseInt(myDb.findSum("expenses","Gift",username));
+        expenses[4]=Integer.parseInt(myDb.findSum("expenses","Bills",username));
+        expenses[5]=Integer.parseInt(myDb.findSum("expenses","Home",username));
+        expenses[6]=Integer.parseInt(myDb.findSum("expenses","Miscellaneous",username));
+        int a=Integer.parseInt(myDb.findIncome(username));
+        int b=Integer.parseInt(myDb.findExpense(username));
+        a=a-b;
+        expenses[7]=(a);
+
+
         /*relativeLayout = (RelativeLayout) findViewById(R.id.layout_id);
         relativeLayout.addView(pieChart);
         relativeLayout.setBackgroundColor(Color.WHITE);*/
@@ -44,16 +62,19 @@ public class expense_graph extends AppCompatActivity {
         pieChart.setHoleRadius(50f);
         description.setPosition(5f,5f);
         description.setTextSize(13f);
-        pieChart.setDescription(description);
+       // pieChart.setDescription(description);
         pieChart.setDrawHoleEnabled(true);
         pieChart.setCenterText("Expenses Per Category");
         pieChart.setCenterTextSize(18f);
         pieChart.setHighlightPerTapEnabled(true);
         pieChart.setTransparentCircleAlpha(0);
-        pieChart.setDrawEntryLabels(true);
+        pieChart.setDrawEntryLabels(false);
         pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setEntryLabelTextSize(13f);
         pieChart.animateXY(1500,1500);
+        description.setEnabled(false);
+
+
         addDataSet();
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
@@ -72,7 +93,7 @@ public class expense_graph extends AppCompatActivity {
             /*"Month: "+ monthName[h.getDataIndex()] +"\n"+"Expense: "+expenses[h.getDataIndex()]*/
             @Override
             public void onNothingSelected() {
-                Toast.makeText(expense_graph.this,"Nothing selected!!",Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -91,6 +112,7 @@ public class expense_graph extends AppCompatActivity {
         PieDataSet pieDataSet = new PieDataSet(expense_entry,"Expenses");
         pieDataSet.setSliceSpace(3f);
         pieDataSet.setValueTextSize(10f);
+        pieDataSet.setDrawValues(false);
         //pieDataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         //pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         ArrayList<Integer> color_names = new ArrayList<>();
@@ -103,7 +125,7 @@ public class expense_graph extends AppCompatActivity {
         color_names.add(Color.rgb(255,108,0));
         color_names.add(Color.rgb(78,255,0));
         pieDataSet.setColors(color_names);
-        pieChart.getLegend().setEnabled(false);
+        pieChart.getLegend().setEnabled(true);
         //pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
        /* legend = pieChart.getLegend();
         legend.setXEntrySpace(5f);

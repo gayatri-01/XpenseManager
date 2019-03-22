@@ -2,10 +2,13 @@ package com.example.android.xpensemanager;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
    Dialog myDialog;
    Button b;
    EditText e;
+   LayoutInflater inflater;
 
 
     public RecyclerViewAdapter(Context mContext, List<Expense> mData) {
@@ -88,6 +92,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                        }
                        else{
                            String table="expenses";
+
                            int finalAMT=Integer.parseInt(String.valueOf(e.getText()));
                            e.setText("");
                            int i=0; String m;
@@ -101,6 +106,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                            else {
                                Toast.makeText(mContext, "Category: " + category, Toast.LENGTH_SHORT).show();
                                myDb.insertData(table, category, username, finalAMT);
+
+
+
+
 
                                for (Expense ex : mData) {
                                    if (ex.getName().equals(category)) {
@@ -118,6 +127,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                            //and then close dialog
                            myDialog.dismiss();
                        }
+                       Intent i = new Intent(mContext,Categories.class);
+                       mContext.startActivity(i);
 
                    }
                });

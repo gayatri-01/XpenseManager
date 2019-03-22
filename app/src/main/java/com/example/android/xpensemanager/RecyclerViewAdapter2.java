@@ -2,6 +2,7 @@ package com.example.android.xpensemanager;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -103,6 +104,8 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
                             myDb.insertData(table,category,username,finalAMT);
                             myDialog2.dismiss();
                         }
+                        Intent i = new Intent(mContext2,Categories.class);
+                        mContext2.startActivity(i);
 
                     }
                 });
@@ -139,4 +142,6 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
             img =(ImageView) itemView.findViewById(R.id.img_income);
         }
     }
+
+
 }

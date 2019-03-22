@@ -29,7 +29,8 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".IncomeAddition" />
         <activity android:name=".Calendar" />
-        <activity android:name=".expense_graph"></activity>
+        <activity android:name=".expense_graph" />
+        <activity android:name=".lalala"></activity>
     </application>
 
 </manifest>
